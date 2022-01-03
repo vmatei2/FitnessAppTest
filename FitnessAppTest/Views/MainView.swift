@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct MainView: View {
-    @State var weight = NumbersOnly()
-    @State var calories = NumbersOnly()
-    @State var date = Date()
+    
+    @ObservedObject var mainViewVM = MainViewViewModel()
+    
     
     var body: some View {
         VStack(alignment: .leading, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
@@ -20,23 +20,26 @@ struct MainView: View {
             
             HStack {
                 Text("Add your current weight").font(.subheadline)
-                TextField("Weight", text: $weight.value)
+                TextField("Weight", value: $mainViewVM.weightEntry.weight, formatter: NumberFormatter())
                     .padding()
                     .keyboardType(.decimalPad)
             }
             HStack {
                 
                 DatePicker("Select date of measurement",
-                           selection: $date,
+                           selection: $mainViewVM.weightEntry.date,
                            displayedComponents: [.date])
             }
             HStack {
                 Text("Add calories eaten yesteday").font(.subheadline)
-                TextField("Calories", text: $calories.value)
+                TextField("Calories", value: $mainViewVM.weightEntry.calories, formatter: NumberFormatter())
                     .padding()
                     .keyboardType(.decimalPad)
             }
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+            Button(action:{
+                mainViewVM.save()
+                
+            }, label: {
                 HStack {
                 Image(systemName: "plus.circle")
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
