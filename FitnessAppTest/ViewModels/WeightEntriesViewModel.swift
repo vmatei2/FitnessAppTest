@@ -12,11 +12,10 @@ import FirebaseFirestoreSwift
 
 class WeightEntriesViewModel: ObservableObject {
     @Published var weightEntries = [WeightEntry]() // Published property so the code in the view will pick up any changes made to this list and update accordingly
+    let db = Firestore.firestore()
     
     func getData() {
         //db reference
-        let db = Firestore.firestore()
-        
         // Read the documents
         
         db.collection("weightEntries").getDocuments { snapshot, error in
@@ -26,7 +25,7 @@ class WeightEntriesViewModel: ObservableObject {
                 // No errors
                 
                 // Update the list property in the main thread
-         
+                
                 
                 if let snapshot = snapshot {
                     // Get all the documents and cerate weightEntry items
@@ -48,6 +47,16 @@ class WeightEntriesViewModel: ObservableObject {
             }
             else {
                 // Handle the error
+            }
+        }
+    }
+    
+    func removeEntry(weightEntry : WeightEntry) {
+        if let weightEntryId = weightEntry.id {
+            db.collection("weightEntries").document(weightEntryId).delete { (error) in
+                if let error = error {
+                    print("Unable to remove document: \(error.localizedDescription)")
+                }
             }
         }
     }

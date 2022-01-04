@@ -26,6 +26,21 @@ struct WeightEntriesListView: View {
                 Text("\(item.calories)")
                 Text(weight)
                 Text("\(item.date)")
+                Button(action: {
+                    self.weightEntriesViewModel.removeEntry(weightEntry: item)
+                    self.weightEntriesViewModel.getData()
+                }, label: {
+                    HStack {
+                    Image(systemName: "delete.left")
+                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                    Text("Remove")
+                        .fontWeight(.semibold)
+                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                    }.padding()
+                    .foregroundColor(.white)
+                    .background(Color.red)
+                    .cornerRadius(40)
+                })
             }
         }.onAppear(perform: {
             self.weightEntriesViewModel.getData()
