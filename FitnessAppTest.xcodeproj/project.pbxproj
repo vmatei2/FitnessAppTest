@@ -24,6 +24,8 @@
 		D900C0282782EF2900D26785 /* WeightEntryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D900C0272782EF2900D26785 /* WeightEntryRepository.swift */; };
 		D900C02B2782F0E900D26785 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D900C02A2782F0E900D26785 /* MainViewViewModel.swift */; };
 		D900C02D2783073400D26785 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D900C02C2783073400D26785 /* GoogleService-Info.plist */; };
+		D900C03327844CA300D26785 /* WeightEntriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D900C03227844CA300D26785 /* WeightEntriesListView.swift */; };
+		D900DB3C27844DE200F4321E /* WeightEntriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D900DB3B27844DE200F4321E /* WeightEntriesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		D900C0272782EF2900D26785 /* WeightEntryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightEntryRepository.swift; sourceTree = "<group>"; };
 		D900C02A2782F0E900D26785 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
 		D900C02C2783073400D26785 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		D900C03227844CA300D26785 /* WeightEntriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightEntriesListView.swift; sourceTree = "<group>"; };
+		D900DB3B27844DE200F4321E /* WeightEntriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightEntriesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				D900C0092781FB6E00D26785 /* MainView.swift */,
+				D900C03227844CA300D26785 /* WeightEntriesListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				D900C02A2782F0E900D26785 /* MainViewViewModel.swift */,
+				D900DB3B27844DE200F4321E /* WeightEntriesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -330,11 +336,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D900DB3C27844DE200F4321E /* WeightEntriesViewModel.swift in Sources */,
 				D900BFE02781F80700D26785 /* ContentView.swift in Sources */,
 				D900C00A2781FB6E00D26785 /* MainView.swift in Sources */,
 				D900C02B2782F0E900D26785 /* MainViewViewModel.swift in Sources */,
 				D900C01A2782EC6800D26785 /* WeightEntry.swift in Sources */,
 				D900C00D2781FE1600D26785 /* NumbersOnly.swift in Sources */,
+				D900C03327844CA300D26785 /* WeightEntriesListView.swift in Sources */,
 				D900C0282782EF2900D26785 /* WeightEntryRepository.swift in Sources */,
 				D900BFDE2781F80700D26785 /* FitnessAppTestApp.swift in Sources */,
 			);

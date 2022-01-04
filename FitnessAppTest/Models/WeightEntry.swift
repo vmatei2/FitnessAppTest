@@ -15,10 +15,11 @@ struct WeightEntry: Codable, Identifiable {
     var date: Date
     var calories: Int
     
-    init() {
-        weight = 0
-        date = Date()
-        calories = 0
+    init(id: String, weight: Float, date:Date, calories: Int) {
+        self.id = id
+        self.weight = weight
+        self.date = date
+        self.calories = calories
     }
 }
 

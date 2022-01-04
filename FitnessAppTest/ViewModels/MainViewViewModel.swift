@@ -10,7 +10,7 @@ import Combine
 
 class MainViewViewModel: ObservableObject {
     @Published var weightEntryRepository = WeightEntryRepository()
-    @Published var weightEntry = WeightEntry()
+    @Published var weightEntry = WeightEntry(id: "Test", weight: 0, date: Date(), calories: 0)
     private var cancellables = Set<AnyCancellable>()
     
     
