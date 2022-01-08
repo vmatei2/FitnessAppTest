@@ -13,47 +13,55 @@ struct MainView: View {
     
     
     var body: some View {
-        
         NavigationView {
-            VStack(alignment: .leading, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
-                
-                
+            
+            VStack(alignment: .leading, spacing: 50, content: {
+    
                 
                 HStack {
                     Text("Add your current weight").font(.subheadline)
+                        .foregroundColor(.black)
                     TextField("Weight", value: $mainViewVM.weightEntry.weight, formatter: NumberFormatter())
-                        .padding()
+                        .padding(.leading, 150)
                         .keyboardType(.decimalPad)
+                        .foregroundColor(.black)
                 }
                 HStack {
-                    
+            
                     DatePicker("Select date of measurement",
                                selection: $mainViewVM.weightEntry.date,
                                displayedComponents: [.date])
+                        .accentColor(.black)
+                
+                    
                 }
                 HStack {
-                    Text("Add calories eaten yesteday").font(.subheadline)
+                    Text("Add calories ytday").font(.subheadline)
+                        .foregroundColor(.black)
                     TextField("Calories", value: $mainViewVM.weightEntry.calories, formatter: NumberFormatter())
-                        .padding()
+                        .padding(.leading, 190)
                         .keyboardType(.decimalPad)
+                        .foregroundColor(.black)
                 }
+                
+                
                 Button(action:{
                     mainViewVM.save()
                     
                 }, label: {
                     HStack {
-                    Image(systemName: "plus.circle")
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    Text("Add")
-                        .fontWeight(.semibold)
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        Image(systemName: "plus.circle")
+                            .font(.title)
+                        Text("Add")
+                            .fontWeight(.semibold)
+                            .font(.title)
                     }.padding()
                     .foregroundColor(.white)
                     .background(Color.green)
                     .cornerRadius(40)
                     
                     
-                }).padding()
+                }).padding(.top, 230)
                 
                 NavigationLink(
                     destination: WeightEntriesListView(),
@@ -62,16 +70,18 @@ struct MainView: View {
                     })
             })
             .padding()
-            .navigationTitle("Fitness Progress App")
+            .navigationTitle("Fitness Progress App 💪")
         }
+        .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color.gray/*@END_MENU_TOKEN@*/)
     }
+    
 }
 
 struct ViewPreviousEntriesButton: View {
     var body: some View {
         Text("View Previous Entries")
             .frame(width: 200, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            .background(Color.gray)
+            .background(Color.green)
             .foregroundColor(.white)
             .cornerRadius(40)
     }

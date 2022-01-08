@@ -26,6 +26,9 @@
 		D900C02D2783073400D26785 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D900C02C2783073400D26785 /* GoogleService-Info.plist */; };
 		D900C03327844CA300D26785 /* WeightEntriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D900C03227844CA300D26785 /* WeightEntriesListView.swift */; };
 		D900DB3C27844DE200F4321E /* WeightEntriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D900DB3B27844DE200F4321E /* WeightEntriesViewModel.swift */; };
+		D900DB3E27883F4C00F4321E /* TrendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D900DB3D27883F4C00F4321E /* TrendsViewModel.swift */; };
+		D900DB4227884AC600F4321E /* TrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D900DB4127884AC600F4321E /* TrendsView.swift */; };
+		D900DB45278A2D8200F4321E /* iLineChart in Frameworks */ = {isa = PBXBuildFile; productRef = D900DB44278A2D8200F4321E /* iLineChart */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,8 @@
 		D900C02C2783073400D26785 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D900C03227844CA300D26785 /* WeightEntriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightEntriesListView.swift; sourceTree = "<group>"; };
 		D900DB3B27844DE200F4321E /* WeightEntriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightEntriesViewModel.swift; sourceTree = "<group>"; };
+		D900DB3D27883F4C00F4321E /* TrendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsViewModel.swift; sourceTree = "<group>"; };
+		D900DB4127884AC600F4321E /* TrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +79,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D900C01F2782EEB400D26785 /* FirebaseAnalytics in Frameworks */,
+				D900DB45278A2D8200F4321E /* iLineChart in Frameworks */,
 				D900C01D2782EEB400D26785 /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				D900C0212782EEB400D26785 /* FirebaseStorage in Frameworks */,
 				D900C0252782EEB400D26785 /* FirebaseFirestore in Frameworks */,
@@ -166,6 +172,7 @@
 			children = (
 				D900C0092781FB6E00D26785 /* MainView.swift */,
 				D900C03227844CA300D26785 /* WeightEntriesListView.swift */,
+				D900DB4127884AC600F4321E /* TrendsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,6 +199,7 @@
 			children = (
 				D900C02A2782F0E900D26785 /* MainViewViewModel.swift */,
 				D900DB3B27844DE200F4321E /* WeightEntriesViewModel.swift */,
+				D900DB3D27883F4C00F4321E /* TrendsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -218,6 +226,7 @@
 				D900C0202782EEB400D26785 /* FirebaseStorage */,
 				D900C0222782EEB400D26785 /* FirebaseAuth */,
 				D900C0242782EEB400D26785 /* FirebaseFirestore */,
+				D900DB44278A2D8200F4321E /* iLineChart */,
 			);
 			productName = FitnessAppTest;
 			productReference = D900BFDA2781F80700D26785 /* FitnessAppTest.app */;
@@ -292,6 +301,7 @@
 			mainGroup = D900BFD12781F80700D26785;
 			packageReferences = (
 				D900C01B2782EEB400D26785 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				D900DB43278A2D8200F4321E /* XCRemoteSwiftPackageReference "iLineChart" */,
 			);
 			productRefGroup = D900BFDB2781F80700D26785 /* Products */;
 			projectDirPath = "";
@@ -344,6 +354,8 @@
 				D900C00D2781FE1600D26785 /* NumbersOnly.swift in Sources */,
 				D900C03327844CA300D26785 /* WeightEntriesListView.swift in Sources */,
 				D900C0282782EF2900D26785 /* WeightEntryRepository.swift in Sources */,
+				D900DB3E27883F4C00F4321E /* TrendsViewModel.swift in Sources */,
+				D900DB4227884AC600F4321E /* TrendsView.swift in Sources */,
 				D900BFDE2781F80700D26785 /* FitnessAppTestApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -668,6 +680,14 @@
 				minimumVersion = 8.10.0;
 			};
 		};
+		D900DB43278A2D8200F4321E /* XCRemoteSwiftPackageReference "iLineChart" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AlexFine/iLineChart.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -695,6 +715,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D900C01B2782EEB400D26785 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		D900DB44278A2D8200F4321E /* iLineChart */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D900DB43278A2D8200F4321E /* XCRemoteSwiftPackageReference "iLineChart" */;
+			productName = iLineChart;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

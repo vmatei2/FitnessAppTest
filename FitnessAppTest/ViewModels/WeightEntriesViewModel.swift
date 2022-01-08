@@ -13,12 +13,14 @@ import FirebaseFirestoreSwift
 class WeightEntriesViewModel: ObservableObject {
     @Published var weightEntries = [WeightEntry]() // Published property so the code in the view will pick up any changes made to this list and update accordingly
     let db = Firestore.firestore()
+    @Published var averageCalories = 0
+    @Published var averageWeight: Float = 0
     
     func getData() {
         //db reference
         // Read the documents
         
-        db.collection("weightEntries").getDocuments { snapshot, error in
+        db.collection("weightEntries").order(by: "date").getDocuments { snapshot, error in
             // Check for errors
             
             if error == nil {
@@ -31,14 +33,22 @@ class WeightEntriesViewModel: ObservableObject {
                     // Get all the documents and cerate weightEntry items
                     DispatchQueue.main.async {
                         self.weightEntries = snapshot.documents.map { doc in
-                            
+                            let dateFormatter = DateFormatter()
                             let stamp = doc["date"] as! Timestamp
+                            let convertedStamp = stamp.dateValue()
+                            dateFormatter.dateFormat = "dd-MM-yyyy"
+                            let date = dateFormatter.string(from: convertedStamp)
+                            var displayDate: Date = Date()
+                            if let convertedDate = dateFormatter.date(from: date) {
+                                displayDate = convertedDate
+                            }
+                            
                             var weight = doc["weight"] as! Float
                             weight = Float(round(100*weight) / 100) // Convert to 2 decimal places
                             // Create wa weight entry Item
                             return WeightEntry(id: doc.documentID,
                                                weight: weight,
-                                               date: stamp.dateValue(),
+                                               date: displayDate,
                                                calories: doc["calories"] as! Int
                             )
                         }
@@ -58,6 +68,21 @@ class WeightEntriesViewModel: ObservableObject {
                     print("Unable to remove document: \(error.localizedDescription)")
                 }
             }
+        }
+    }
+    
+    func calculateAverages(){
+        var totalCalories: Int = 0
+        var totalWeights: Float = 0
+        let totalNumberOfEntries = weightEntries.count
+        
+        for entry in weightEntries {
+            totalCalories += entry.calories
+            totalWeights += entry.weight
+        }
+        if totalNumberOfEntries != 0 { // avoid init when we don't have any entries
+        self.averageCalories = totalCalories / totalNumberOfEntries
+        self.averageWeight = totalWeights / Float(totalNumberOfEntries)
         }
     }
 }
