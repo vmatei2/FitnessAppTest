@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     @ObservedObject var mainViewVM = MainViewViewModel()
+    @State private var showAlert = false // boolean to show alert on succesful db addition
     
     
     var body: some View {
@@ -46,7 +47,7 @@ struct MainView: View {
                 
                 
                 Button(action:{
-                    mainViewVM.save()
+                    showAlert = mainViewVM.save()
                     
                 }, label: {
                     HStack {
@@ -61,8 +62,14 @@ struct MainView: View {
                     .cornerRadius(40)
                     
                     
-                }).padding(.top, 230)
-                
+                }
+                ).padding(.top, 230)
+                .alert(isPresented: $showAlert, content: {
+                    Alert (title: Text("Succesfully added to database"),
+                           message: Text("Weight: " + "\(mainViewVM.weightEntry.weight)"
+                                            + " | Calories: " + "\(mainViewVM.weightEntry.calories)"),
+                           dismissButton: .cancel())
+                })
                 NavigationLink(
                     destination: WeightEntriesListView(),
                     label: {

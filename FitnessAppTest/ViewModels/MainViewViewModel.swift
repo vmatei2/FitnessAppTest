@@ -14,11 +14,11 @@ class MainViewViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     
-    func addEntry(weightEntry: WeightEntry){
-        weightEntryRepository.addEntry(entry: weightEntry)
+    func addEntry(weightEntry: WeightEntry) -> Bool {
+        return weightEntryRepository.addEntry(entry: weightEntry)
     }
     
-    func save() {
-        addEntry(weightEntry: weightEntry)
+    func save() -> Bool {
+        return addEntry(weightEntry: weightEntry)
     }
 }

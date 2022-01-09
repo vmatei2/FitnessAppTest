@@ -27,9 +27,9 @@ struct WeightEntriesListView: View {
             let weight: String = String(format: "%.2f", item.weight)
             let date: String = self.convertDate(item: item)
             HStack(spacing: 50) {
-                Text("\(item.calories)")
-                Text(weight)
-                Text(date)
+                Text("\(item.calories)").fixedSize()
+                Text(weight).fixedSize()
+                Text(date).fixedSize()
                 Button(action: {
                     self.weightEntriesViewModel.removeEntry(weightEntry: item)
                     self.weightEntriesViewModel.getData(){self.weightEntriesViewModel.calculateAverages() }
@@ -42,6 +42,7 @@ struct WeightEntriesListView: View {
                     .background(Color.red)
                     .cornerRadius(40)
                 })
+                Spacer()
             }
         }
         

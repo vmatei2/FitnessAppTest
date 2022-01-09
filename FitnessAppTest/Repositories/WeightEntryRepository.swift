@@ -35,12 +35,14 @@ class WeightEntryRepository: ObservableObject {
         }
     }
     
-    func addEntry(entry: WeightEntry){
+    func addEntry(entry: WeightEntry) -> Bool{
         do {
             let _ = try db.collection("weightEntries").addDocument(from: entry)
+            return true
         }
         catch {
             fatalError("Unable to encode task: \(error.localizedDescription)")
+            return false
         }
     }
 }
