@@ -32,7 +32,7 @@ struct WeightEntriesListView: View {
                 Text(date)
                 Button(action: {
                     self.weightEntriesViewModel.removeEntry(weightEntry: item)
-                    self.weightEntriesViewModel.getData()
+                    self.weightEntriesViewModel.getData(){self.weightEntriesViewModel.calculateAverages() }
                 }, label: {
                     HStack {
                         Image(systemName: "delete.left")
@@ -50,25 +50,18 @@ struct WeightEntriesListView: View {
             Text("Average Weight")
         })
         HStack(spacing: 80){
-            Text(String(self.weightEntriesViewModel.averageCalories))
-            Text(String(self.weightEntriesViewModel.averageWeight))
+            Text(String(weightEntriesViewModel.averageCalories))
+            Text(String(weightEntriesViewModel.averageWeight))
         }
         .onAppear(perform: {
-            self.weightEntriesViewModel.getData()
-            self.weightEntriesViewModel.calculateAverages()
-            let stop = 0
-        })
+            self.weightEntriesViewModel.getData() {self.weightEntriesViewModel.calculateAverages() }
+        }
+        )
         NavigationLink(
             destination: TrendsView(weightEntries: self.weightEntriesViewModel.weightEntries),
             label: {
                 Text("View Trends")
             })
-    }
-    
-    init() {
-        weightEntriesViewModel.getData()
-        weightEntriesViewModel.calculateAverages()
-        
     }
     
     func convertDate(item: WeightEntry) -> String {

@@ -16,7 +16,7 @@ class WeightEntriesViewModel: ObservableObject {
     @Published var averageCalories = 0
     @Published var averageWeight: Float = 0
     
-    func getData() {
+    func getData(completion: @escaping () -> Void) {
         //db reference
         // Read the documents
         
@@ -52,6 +52,7 @@ class WeightEntriesViewModel: ObservableObject {
                                                calories: doc["calories"] as! Int
                             )
                         }
+                        completion()
                     }
                 }
             }
@@ -59,6 +60,7 @@ class WeightEntriesViewModel: ObservableObject {
                 // Handle the error
             }
         }
+        
     }
     
     func removeEntry(weightEntry : WeightEntry) {
@@ -81,8 +83,12 @@ class WeightEntriesViewModel: ObservableObject {
             totalWeights += entry.weight
         }
         if totalNumberOfEntries != 0 { // avoid init when we don't have any entries
-        self.averageCalories = totalCalories / totalNumberOfEntries
-        self.averageWeight = totalWeights / Float(totalNumberOfEntries)
+            self.averageCalories = totalCalories / totalNumberOfEntries
+            self.averageWeight = totalWeights / Float(totalNumberOfEntries)
         }
+        print("Average Calories")
+        print(self.averageCalories)
+        print("Average Weight")
+        print(self.averageWeight)
     }
 }
